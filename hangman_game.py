@@ -88,7 +88,7 @@ def get_word(difficulty=1):
     words = [i.strip() for i in data if len(i) == count]
     word = choice(words)
     return word, ['_' for i in range(len(word))]
-    
+
 def display(lives, optional=None):
     clear()
     print("\t\tHangman Game")
@@ -96,7 +96,7 @@ def display(lives, optional=None):
     comment =  f'"{quote()}"'
     print(comment)
     print(hangman(lives))
-    
+
 def main():
     print("\t\tHangman Game")
     mode = int(input("Enter difficulty (1 - 6): "))
@@ -105,7 +105,7 @@ def main():
     lives = 0
     won = False
     comment = None
-    
+
     while not game_over and lives < 6:
         if not comment:
             comment = f"You have to find {len(blank)} letter word!!"
@@ -117,21 +117,21 @@ def main():
         if usr_choice in blank:
             comment = "You guessed that already..."
             display(lives, comment)
-            
+
         blank = match(word, usr_choice, blank)
-        
+
         if usr_choice not in word:
             lives += 1
             comment = None
-            
+
         if '_' not in blank:
             game_over = True
             won = True
-            
+
     print(blank_str)
     comment = f'The word is "{word}"'
     display(lives, comment)
-    
+
     print("You won..." if won else "You Lose...")
-            
-main()
+if __name__ == "__main__":
+    main()
